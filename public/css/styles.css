@@ -1,9 +1,3 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
 /* Mobile First Base Styles */
 * {
   box-sizing: border-box;
@@ -20,40 +14,13 @@ body {
   background-color: #fff;
 }
 
-body::before, body::after {
-  content: '';
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background: repeating-linear-gradient(90deg, #000, #000 20px, #fff 20px, #fff 40px);
-  z-index: 999;
-}
-
-body::before {
-  top: 0;
-}
-
-body::after {
-  bottom: 0;
-}
-
-body::after, body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 20px;
-  background: repeating-linear-gradient(0deg, #000, #000 20px, #fff 20px, #fff 40px);
-  z-index: 999;
-}
-
-body::before {
-  left: 0;
-}
-
-body::after {
-  right: 0;
+/* Checkered border pattern */
+body {
+  border: 20px solid transparent;
+  border-image: repeating-linear-gradient(45deg, #000, #000 20px, #fff 20px, #fff 40px) 20;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 img {
@@ -63,7 +30,7 @@ img {
 
 a {
   text-decoration: none;
-  color: #1a73e8;
+  color: #0056b3; /* Darker blue for better contrast */
 }
 
 ul {
@@ -93,17 +60,19 @@ header {
 
 .account a {
   font-size: 0.9rem;
+  color: #022c1e; /* Darker blue for better contrast */
 }
 
 /* Navigation Styles */
 nav {
-  background-color: #333;
+  background-color: #242424; /* Darker background for better contrast */
   padding: 0.5rem 0;
 }
 
 .nav-list {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* Changed from space-around to center */
+  gap: 2rem; /* Added gap for spacing between items */
 }
 
 .nav-list li a {
@@ -116,7 +85,7 @@ nav {
 /* Main Content Styles */
 .main-content {
   padding: 1rem;
-  margin: 20px;
+  margin: 0 20px;
 }
 
 .main-content h1 {
@@ -126,7 +95,7 @@ nav {
 /* Hero Section */
 .hero {
   position: relative;
-  background-color: #e6f2ff;
+  background-color:  white; /* White background for better contrast */
   padding: 1rem;
   margin-bottom: 2rem;
   border-radius: 5px;
@@ -138,13 +107,15 @@ nav {
 }
 
 .hero-details h2 {
-  color: #00a0e4;
+  color: #0077b6; /* Darker blue for better contrast - matches image */
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .hero-details ul {
   margin-bottom: 1rem;
-  color: #00a0e4;
+  color: darkblue; /* Darker turquoise to match image and improve contrast */
+  font-weight: bold;
 }
 
 .hero-image {
@@ -153,7 +124,7 @@ nav {
 }
 
 .cta-button {
-  background-color: #00a0e4;
+  background-color: #033660; /* Darker blue for better contrast */
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -176,7 +147,8 @@ nav {
 
 .upgrades h2, .reviews h2 {
   margin-bottom: 1rem;
-  text-align: center;
+  text-align: left; /* Left aligned to match image */
+  color: #333;
 }
 
 .upgrades-grid {
@@ -195,27 +167,35 @@ nav {
   max-height: 100px;
   object-fit: cover;
   border: 1px solid #ddd;
-  background-color: #00a0e4;
+  background-color: #031e27; /* Bright blue to match image */
   padding: 0.5rem;
 }
 
 .upgrade-item p {
   margin-top: 0.5rem;
   font-size: 0.9rem;
+  color: #333;
+}
+
+.review-list {
+  padding-left: 1.5rem;
 }
 
 .review-list li {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
+  list-style-type: disc; /* Bullet points to match image */
+  color: #333;
 }
 
 /* Footer Styles */
 footer {
-  text-align: center;
+  text-align: left;
   padding: 1rem;
-  background-color: #f5f5f5;
+  background-color: white;
   margin: 2rem 20px 20px 20px;
   font-size: 0.8rem;
+  color: black;
 }
 
 /* Media Queries */
@@ -239,10 +219,12 @@ footer {
   
   .info-sections {
     flex-direction: row;
+    justify-content: space-between;
   }
   
   .upgrades, .reviews {
     flex: 1;
+    margin: 0 10px;
   }
   
   .upgrades-grid {
@@ -254,10 +236,9 @@ footer {
   }
   
   .nav-list {
-    justify-content: flex-start;
+    justify-content: center; /* Keep centered in desktop view */
+    gap: 2rem; /* Keep consistent spacing */
   }
   
-  .nav-list li:not(:last-child) {
-    margin-right: 1rem;
-  }
+  /* Removed the conflicting nav-list li margin that was here previously */
 }
