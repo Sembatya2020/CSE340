@@ -8,7 +8,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: #000000;
   max-width: 100%;
   overflow-x: hidden;
   background-color: #fff;
@@ -30,7 +30,7 @@ img {
 
 a {
   text-decoration: none;
-  color: #0056b3; /* Darker blue for better contrast */
+  color: #003366; /* Darkened for better contrast */
 }
 
 ul {
@@ -60,12 +60,12 @@ header {
 
 .account a {
   font-size: 0.9rem;
-  color: #022c1e; /* Darker blue for better contrast */
+  color: darkblue; /* Changed to black for maximum contrast */
 }
 
 /* Navigation Styles */
 nav {
-  background-color:black; /* Darker background for better contrast */
+  background-color: black; /* Darker background for better contrast */
   padding: 0.5rem 0;
 }
 
@@ -95,7 +95,7 @@ nav {
 /* Hero Section */
 .hero {
   position: relative;
-  background-color:  white; /* White background for better contrast */
+  background-color: white; /* White background for better contrast */
   padding: 1rem;
   margin-bottom: 2rem;
   border-radius: 5px;
@@ -107,14 +107,14 @@ nav {
 }
 
 .hero-details h2 {
-  color: #0077b6; /* Darker blue for better contrast - matches image */
+  color: #000; /* Changed to black for maximum contrast */
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
 .hero-details ul {
   margin-bottom: 1rem;
-  color: darkblue; /* Darker turquoise to match image and improve contrast */
+  color: darkblue; /* Changed to black for maximum contrast */
   font-weight: bold;
 }
 
@@ -124,7 +124,7 @@ nav {
 }
 
 .cta-button {
-  background-color: #033660; /* Darker blue for better contrast */
+  background-color: darkblue; /* Changed to black for maximum contrast */
   color: white;
   border: none;
   padding: 0.8rem 1.5rem;
@@ -167,7 +167,7 @@ nav {
   max-height: 100px;
   object-fit: cover;
   border: 1px solid #ddd;
-  background-color: #031e27; /* Bright blue to match image */
+  background-color: #000000; /* Changed to black for maximum contrast */
   padding: 0.5rem;
 }
 
@@ -185,7 +185,7 @@ nav {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   list-style-type: disc; /* Bullet points to match image */
-  color: #333;
+  color: #000000;
 }
 
 /* Footer Styles */
@@ -239,6 +239,4 @@ footer {
     justify-content: center; /* Keep centered in desktop view */
     gap: 2rem; /* Keep consistent spacing */
   }
-  
-  /* Removed the conflicting nav-list li margin that was here previously */
 }
