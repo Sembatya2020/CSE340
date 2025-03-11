@@ -121,6 +121,7 @@ nav {
 .hero-image {
   max-width: 100%;
   margin-top: 1rem;
+  position: relative;
 }
 
 .cta-button {
@@ -141,7 +142,7 @@ nav {
 
 .upgrades, .reviews {
   background-color: #f5f5f5;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 5px;
 }
 
@@ -183,7 +184,7 @@ nav {
 
 .review-list li {
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1.6rem;
   list-style-type: disc; /* Bullet points to match image */
   color: #000000;
 }
@@ -237,6 +238,6 @@ footer {
   
   .nav-list {
     justify-content: center; /* Keep centered in desktop view */
-    gap: 2rem; /* Keep consistent spacing */
+    gap: 10rem; /* Keep consistent spacing */
   }
 }
