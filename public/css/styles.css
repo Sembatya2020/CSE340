@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
   background-color: #fff;
   border: 20px solid transparent;
-  border-image: repeating-linear-gradient(45deg, #000, #000 20px, #fff 20px, #fff 40px) 20;
+  border-image: url(../images/site/checkerboard.jpg) 20 round;
   min-height: 100vh;
   margin: 0;
   padding: 0;
