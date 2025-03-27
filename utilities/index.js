@@ -62,7 +62,7 @@ Util.buildVehicleGrid = async function (data) {
   if (data.length > 0) {
     let vehicle = data[0];
  
-    vehicle = `
+    return `
       <div id="singleVehicleWrapper">
      <picture>
     <source media="(max-width: 400px)" srcset="${vehicle.inv_thumbnail}">
@@ -86,9 +86,8 @@ Util.buildVehicleGrid = async function (data) {
       </div>
     `;
   } else {
-    vehicle = `<p class="notice">Sorry, no matching vehicle could be found.</p>`;
+    return `<p class="notice">Sorry, no matching vehicle could be found.</p>`;
   }
-  return vehicle;
 };
 /* ****************************************
  * Middleware For Handling Errors
