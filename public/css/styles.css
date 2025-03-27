@@ -14,15 +14,6 @@ body {
   background-color: #fff;
 }
 
-/* Checkered border pattern */
-body {
-  border: 20px solid transparent;
-  border-image: repeating-linear-gradient(45deg, #000, #000 20px, #fff 20px, #fff 40px) 20;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -231,5 +222,46 @@ footer {
   .nav-list {
     justify-content: center; /* Keep centered in desktop view */
     gap: 10rem; /* Keep consistent spacing */
+  }
+}
+
+/* for mobile view  */ 
+#inv-display {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  word-wrap: break-word;
+  font-family: 'Inter', serif;
+}
+@media only screen and (min-width: 38em) {
+  #inv-display {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Adjust column width */
+    grid-template-rows: repeat(2, auto);
+  }
+ 
+  #singleVehicleWrapper {
+    max-width: 100vw;
+    height: 62vh;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+ 
+  #singleVehicleWrapper img {
+    max-width: 100%;
+  }
+ 
+  #singleVehicleDetails {
+    text-align: left;
+    width: 24rem;
   }
 }

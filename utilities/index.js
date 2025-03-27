@@ -57,6 +57,39 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+Util.buildVehicleGrid = async function (data) {
+  let vehicle = '';
+  if (data.length > 0) {
+    let vehicle = data[0];
+ 
+    vehicle = `
+      <div id="singleVehicleWrapper">
+     <picture>
+    <source media="(max-width: 400px)" srcset="${vehicle.inv_thumbnail}">
+    <source media="(max-width: 600px)" srcset="${vehicle.inv_thumbnail}">
+    <source media="(max-width: 1200px)" srcset="${vehicle.inv_image}">
+    <source media="(min-width: 1201px)" srcset="${vehicle.inv_image}">
+      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_year} ${
+      vehicle.inv_make
+    } ${vehicle.inv_model}" loading="lazy">
+  </picture>
+        <ul id="singleVehicleDetails">
+          <li><h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2></li>
+          <li><strong>Price: </strong>$${new Intl.NumberFormat('en-US').format(
+            vehicle.inv_price
+          )}</li>
+          <li><strong>Description: </strong>${vehicle.inv_description}</li>
+          <li><strong>Miles: </strong>${new Intl.NumberFormat('en-US').format(
+            vehicle.inv_miles
+          )}</li>
+        </ul>
+      </div>
+    `;
+  } else {
+    vehicle = `<p class="notice">Sorry, no matching vehicle could be found.</p>`;
+  }
+  return vehicle;
+};
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
