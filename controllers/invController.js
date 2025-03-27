@@ -20,9 +20,9 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 /** Build a single vehicle inventory */
-invCont.buildVehicle = async function (req, res, next) {
+invCont.buildByInventoryId = async function (req, res, next) {
   const inv_id = req.params.vehicleId
-  const data = await invModel.getVehicleById(inv_id)
+  const data = await invModel.getInventoryByInvId(inv_id)
   const vehicle = await utilities.buildVehicle(data)
   let nav = await utilities.getNav()
   const VehicleMake = data[0].inv_make;
