@@ -79,6 +79,16 @@ Util.buildVehicleGrid = async function (data) {
 };
 
 /* ****************************************
+ * Render Error View
+ **************************************** */
+Util.renderError = function (res, error) {
+  res.status(500).render("error", {
+    title: "Server Error",
+    message: error.message || "An unexpected error occurred.",
+  });
+};
+
+/* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
  * General Error Handling
