@@ -13,6 +13,7 @@ const expressLayouts = require('express-ejs-layouts');
 const baseController = require('./controllers/baseController');
 const inventoryRoute = require('./routes/inventoryRoute');
 const utilities = require('./utilities/');
+const errorRoute = require("./routes/errorRoute");
  
 /* ***********************
  * Routes
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(expressLayouts);
 app.set('layout', './layouts/layout'); // n
 app.use(static);
+app.use("/error", errorRoute);
  
 /* ***********************
  * Homepage Route
