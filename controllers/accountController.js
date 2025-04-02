@@ -55,8 +55,34 @@ async function registerAccount(req, res) {
   }
 }
 
+/* ****************************************
+*  Process Login
+* *************************************** */
+async function processLogin(req, res) {
+  let nav = await utilities.getNav()
+  const { account_email, account_password } = req.body
+
+  // Placeholder for login validation logic
+  const loginResult = await accountModel.validateLogin(account_email, account_password)
+
+  if (loginResult) {
+    req.flash("notice", `Welcome back!`)
+    res.status(200).render("account/dashboard", {
+      title: "Dashboard",
+      nav,
+    })
+  } else {
+    req.flash("notice", "Login failed. Please check your credentials.")
+    res.status(401).render("account/login", {
+      title: "Login",
+      nav,
+    })
+  }
+}
+
 module.exports = { 
   buildLogin, 
   buildRegister,
-  registerAccount 
+  registerAccount,
+  processLogin // Added export for processLogin
 }
