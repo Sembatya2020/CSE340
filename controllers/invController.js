@@ -39,7 +39,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
 /* ***************************
  *  Build management view
  * ************************** */
-async function buildManagement(req, res, next) {
+invCont.buildManagement = async function(req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/management", {
     title: "Inventory Management",
@@ -51,7 +51,7 @@ async function buildManagement(req, res, next) {
 /* ***************************
  *  Deliver add classification view
  * ************************** */
-async function buildAddClassification(req, res, next) {
+invCont.buildAddClassification = async function (req, res, next) {
   let nav = await utilities.getNav()
   res.render("inventory/add-classification", {
     title: "Add New Classification",
@@ -63,7 +63,7 @@ async function buildAddClassification(req, res, next) {
 /* ***************************
  *  Process add classification
  * ************************** */
-async function addClassification(req, res) {
+invCont.addClassification = async function (req, res) {
   const { classification_name } = req.body
   
   const result = await invModel.addClassification(classification_name)
@@ -92,7 +92,7 @@ async function addClassification(req, res) {
 /* ***************************
  *  Deliver add inventory view
  * ************************** */
-async function buildAddInventory(req, res, next) {
+invCont.buildAddInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   let classifications = await utilities.buildClassificationList()
   res.render("inventory/add-inventory", {
@@ -106,7 +106,7 @@ async function buildAddInventory(req, res, next) {
 /* ***************************
  *  Process add inventory
  * ************************** */
-async function addInventory(req, res) {
+invCont.addInventory = async function (req, res) {
   let nav = await utilities.getNav()
   const {
     classification_id,

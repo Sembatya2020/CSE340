@@ -52,7 +52,6 @@ app.set('layout', './layouts/layout'); // n
 app.use(static);
 app.use("/error", errorRoute);
 app.use("/account", accountRoute)
-app.use("/registers", accountRoute)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 

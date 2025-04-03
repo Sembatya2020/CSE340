@@ -39,4 +39,7 @@ router.post(
   utilities.handleErrors(invController.addInventory)
 )
 
+router.get("/management", utilities.handleErrors(invController.buildManagement))
+router.post("/management", invController.buildManagement)
+
 module.exports = router;
