@@ -107,3 +107,4 @@ async function addInventory(
 
 module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInvId, addClassification, checkExistingClassification, addInventory};
 
+ 

@@ -13,30 +13,30 @@ router.get('/detail/:invId', utilities.handleErrors(invController.buildByInvento
 // Route to build inventory management view
 router.get("/", utilities.handleErrors(invController.buildManagement))
 
-// // Routes for classification management
-// router.get(
-//   "/add-classification",
-//   utilities.handleErrors(invController.buildAddClassification)
-// )
+// Routes for classification management
+router.get(
+  "/add-classification",
+  utilities.handleErrors(invController.buildAddClassification)
+)
 
-// router.post(
-//   "/add-classification",
-//   invValidate.classificationRules(),
-//   invValidate.checkClassificationData,
-//   utilities.handleErrors(invController.addClassification)
-// )
+router.post(
+  "/add-classification",
+  invValidate.classificationRules(),
+  invValidate.checkClassificationData,
+  utilities.handleErrors(invController.addClassification)
+)
 
-// // Routes for inventory management
-// router.get(
-//   "/add-inventory",
-//   utilities.handleErrors(invController.buildAddInventory)
-// )
+// Routes for inventory management
+router.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.buildAddInventory)
+)
 
-// router.post(
-//   "/add-inventory",
-//   invValidate.inventoryRules(),
-//   invValidate.checkInventoryData,
-//   utilities.handleErrors(invController.addInventory)
-// )
+router.post(
+  "/add-inventory",
+  invValidate.inventoryRules(),
+  invValidate.checkInventoryData,
+  utilities.handleErrors(invController.addInventory)
+)
 
 module.exports = router;
