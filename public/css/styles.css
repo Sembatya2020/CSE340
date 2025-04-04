@@ -77,7 +77,7 @@ nav ul {
   padding: 10px;
 }
 
-nav ul li, #hook {
+nav ul li{
   list-style: none;
 }
 /* Main Content Styles */
