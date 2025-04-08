@@ -6,7 +6,7 @@ const validate = {}
 /*  **********************************
 *  Registration Data Validation Rules
 * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
   return [
     // firstname is required and must be string
     body("account_firstname")
@@ -83,16 +83,13 @@ body("account_email")
     }
   })
 
-const loginValidationRules = [
+validate.loginValidationRules = () => { return [
   check("account_email")
     .isEmail()
     .withMessage("Please provide a valid email address."),
   check("account_password")
     .notEmpty()
     .withMessage("Password is required.")
-]
+]}
 
-module.exports = {
-  ...validate,
-  loginValidationRules
-}
+module.exports = validate

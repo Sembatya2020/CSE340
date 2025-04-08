@@ -1,27 +1,34 @@
-const regValidate = require('../utilities/account-validation')
-const { loginValidationRules } = require("../utilities/account-validation")
+const regValidate = require('../utilities/accountValidation')
+const loginValidationRules  = require("../utilities/accountValidation")
 const express = require("express")
 const router = new express.Router()
 const utilities = require("../utilities/")
 const accountController = require("../controllers/accountController")
 
-router.get("/login", utilities.handleErrors(accountController.buildLogin))
 // Route to build registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 // Process the registration data
 router.post(
   "/register",
-  regValidate.registationRules(),
+  regValidate.registrationRules(),
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
 
-// Process the login attempt
+router.get("/login", utilities.handleErrors(accountController.buildLogin))
+
+// Process the login request
 router.post(
   "/login",
-  loginValidationRules,
-  utilities.handleErrors(accountController.processLogin)
+  regValidate.loginValidationRules(),
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.accountLogin)
 )
 
+//Adding a new route for account management
+router.get(
+  "/account",
+  utilities.handleErrors(accountController.accountManagement)
+)
 module.exports = router
