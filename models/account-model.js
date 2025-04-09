@@ -38,4 +38,36 @@ async function getAccountByEmail (account_email) {
     return new Error("No matching email found")
   }
 }
+
+/* *****************************
+* Update account data on id (desired output == 1)
+* ***************************** */
+async function updateAccountInfo(account_firstname, account_lastname, account_email, account_id) {
+  try {
+    // get account info on account_id, returns all account info
+    const result = await pool.query(
+      'UPDATE account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4',
+      [account_firstname, account_lastname, account_email, account_id])
+    return result.rowCount
+  } catch (error) {
+    // return if update fails
+    console.error("updateaccountinfo error " + error)
+  }
+}
+
+/* *****************************
+* Change account password on account_id (desired output == 1)
+* ***************************** */
+async function changeAccountPassword(account_password, account_id) {
+  try {
+    // get account info on account_id, returns all account info
+    const result = await pool.query(
+      'UPDATE account SET account_password = $1 WHERE account_id = $2',
+      [account_password, account_id])
+    return result.rowCount
+  } catch (error) {
+    // return if update fails
+    console.error("changeaccountpassword error " + error)
+  }
+}
 module.exports = { registerAccount }
