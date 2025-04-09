@@ -28,7 +28,7 @@ async function buildRegister(req, res, next) {
   /* 
   Deliver Account Management View
  */
-async function accountManagement(req, res) {
+async function accountManagement(req, res, next) {
   let nav = await utilities.getNav();
   const flashMessage = req.flash("notice"); 
   const errors = req.flash("errors"); 
