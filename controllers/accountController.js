@@ -31,15 +31,21 @@ async function buildRegister(req, res, next) {
 * *************************************** */
 async function accountManagement(req, res, next) {
   let nav = await utilities.getNav();
-  const flashMessage = req.flash("notice"); 
+  const message = req.flash("notice"); 
   const errors = req.flash("errors"); 
 
+  // Check if the user is logged in
+  if (!res.locals.accountData) {
+    req.flash("notice", "Please log in.");
+    return res.redirect("/account/login");
+  }
+
   res.render("account/accountManagement", {
-      title: "Account Management",
-      nav,
-      flashMessage,
-      errors,
-      accountData: res.locals.accountData
+    title: "Account Management",
+    nav,
+    message,
+    errors,
+    accountData: res.locals.accountData
   });
 }
 

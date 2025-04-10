@@ -28,31 +28,30 @@ router.post(
 // Account management route - requires login to access
 router.get(
   "/",
-  regValidate.checkLoginData,
+  utilities.checkLogin,  // Use checkLogin instead of checkLoginData
   utilities.handleErrors(accountController.accountManagement)
 )
 
 // Process password update
 router.post(
   "/update-password",
-  regValidate.checkLoginData,
-  regValidate.checkPasswordData,   // Check for validation errors
+  utilities.checkLogin,  // Use checkLogin instead of checkLoginData
+  regValidate.checkPasswordData,
   utilities.handleErrors(accountController.updatePassword)
 )
-
 // Process account information update
 router.post(
   "/update",
-  regValidate.checkLoginData,
-  regValidate.accountUpdateRules(), // Validation for account update
-  regValidate.checkAccountData,    // Check for validation errors
+  utilities.checkLogin,  // Use checkLogin instead of checkLoginData
+  regValidate.accountUpdateRules(),
+  regValidate.checkAccountData,
   utilities.handleErrors(accountController.updateAccount)
 )
 
 // Route to account update view
 router.get(
   "/update/:account_id",
-  regValidate.checkLoginData,
+  utilities.checkLogin,  // Use checkLogin instead of checkLoginData
   utilities.handleErrors(accountController.buildAccountUpdate)
 )
 
