@@ -109,4 +109,24 @@ validate.checkLoginData = async (req, res, next) => {
   next();
 };
 
+validate.passwordValidationRule = () => {
+  return [
+
+  ];
+};
+
+validate.checkPasswordData = async(req, res, next) => {
+  next();
+}
+
+validate.accountUpdateRules = () => {
+  return [
+
+  ];
+};
+
+validate.checkAccountData = async(req, res, next) => {
+  next();
+}
+
 module.exports = validate;

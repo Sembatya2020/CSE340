@@ -36,9 +36,11 @@ router.get(
 router.post(
   "/update-password",
   utilities.checkLogin,  // Use checkLogin instead of checkLoginData
+  regValidate.passwordValidationRule(),
   regValidate.checkPasswordData,
   utilities.handleErrors(accountController.updatePassword)
 )
+
 // Process account information update
 router.post(
   "/update",
