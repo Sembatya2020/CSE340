@@ -1,41 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Account Management</h1>
+<% if (title) {%>
+    <h1><%= title %></h1>
+<%} else {res.redirect('/')} %>
 
-        <% if (flashMessage && flashMessage.length > 0) { %>
-            <div class="alert alert-success"><%= flashMessage %></div>
-        <% } %>
+<%- messages() %>
 
-        <% if (errors && errors.length > 0) { %>
-            <div class="alert alert-danger">
-                <ul>
-                    <% errors.forEach(error => { %>
-                        <li><%= error %></li>
-                    <% }); %>
-                </ul>
-            </div>
-        <% } %>
+<% if (accountData) { %>
+    <h2>Welcome <%= accountData.first_name %></h2>
+    <p>You're logged in.</p>
 
-        <% if (accountData) { %>
-            <h2>Welcome <%= accountData.first_name %></h2>
-            <p>You're logged in.</p>
+    <!-- Update account information link -->
+    <p><a href="/account/update/<%= accountData.account_id %>">Update Account Information</a></p>
 
-            <!-- Update account information link -->
-            <p><a href="/account/update/<%= accountData.account_id %>">Update Account Information</a></p>
-
-            <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
-                <h3>Inventory Management</h3>
-                <p><a href="/inv/management">Access Inventory Management</a></p>
-            <% } %>
-        <% } %>
-    </div>
-</body>
-</html>
+    <% if (accountData.account_type === "Employee" || accountData.account_type === "Admin") { %>
+        <h3>Inventory Management</h3>
+        <p><a href="/inv/management">Access Inventory Management</a></p>
+    <% } %>
+<% } %>
