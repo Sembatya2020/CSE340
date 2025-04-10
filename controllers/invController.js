@@ -51,6 +51,20 @@ invCont.buildManagement = async function (req, res, next) {
   });
 };
 
+invCont.buildManagementView = async function (req, res, next){
+  let nav = await utilities.getNav()
+  
+  // Add this line to create the classification select list
+  const classificationSelect = await utilities.buildClassificationList()
+  
+  res.render("./inventory/management", {
+    title: "Inventory Management",
+    nav,
+    classificationSelect, // Add this to pass the select list to the view
+    errors: null,
+  })
+}
+
 /* ***************************
  *  Deliver add classification view
  * ************************** */

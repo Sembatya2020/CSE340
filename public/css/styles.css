@@ -576,3 +576,202 @@ adding css to invetory management*/
 .form-group button:hover {
   background-color: #ccc;
 }
+
+/*styling the update form*/
+
+.input-box {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.input-box input[type="text"],
+.input-box input[type="email"],
+.input-box input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.input-box input[type="text"]:focus,
+.input-box input[type="email"]:focus,
+.input-box input[type="password"]:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+.input-box input[type="submit"] {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: background-color 0.3s;
+}
+
+.input-box input[type="submit"]:hover {
+  background-color: #3a7bc8;
+}
+
+.fine-print {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.reveal-button {
+  font-size: 12px;
+  color: #4a90e2;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.reveal-button.active {
+  text-decoration: underline;
+}
+
+/* Inventory Management Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center; /* Center all text content */
+}
+
+main h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+main h2 {
+  color: #3498db;
+  margin: 25px 0 15px 0;
+  text-align: center;
+}
+
+main p {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 15px auto;
+}
+
+.management-links {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 0 auto 30px auto;
+  border-left: 4px solid #3498db;
+  max-width: 800px;
+}
+
+.management-links p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.management-links ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.management-links li {
+  margin-bottom: 10px;
+}
+
+.management-links a {
+  display: inline-block;
+  padding: 8px 15px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.management-links a:hover {
+  background-color: #2980b9;
+}
+
+/* Classification select styling */
+select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 15px auto;
+  width: 100%;
+  max-width: 400px;
+  font-size: 16px;
+  display: block; /* Makes it center with margin auto */
+}
+
+/* Inventory table styling */
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto 0 auto;
+  max-width: 900px;
+}
+
+#inventoryDisplay thead th {
+  background-color: #3498db;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+#inventoryDisplay tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  text-align: center;
+}
+
+#inventoryDisplay tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+#inventoryDisplay a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+#inventoryDisplay a:hover {
+  text-decoration: underline;
+}
+
+noscript {
+  display: block;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  margin: 20px auto 0 auto;
+  border-radius: 4px;
+  border: 1px solid #f5c6cb;
+  max-width: 800px;
+  text-align: center;
+}
