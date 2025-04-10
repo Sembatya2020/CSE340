@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken")
-const bcrypt = require("bcryptjs")  // Added missing import
-require("dotenv").config()
+const bcrypt = require("bcryptjs")
 const utilities = require("../utilities/")
 const accountModel = require("../models/account-model")
+require("dotenv").config()
 
 /* ****************************************
 *  Deliver login view

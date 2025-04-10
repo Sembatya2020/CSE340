@@ -1,9 +1,8 @@
 const regValidate = require('../utilities/accountValidation')
-const express = require("express")
-const router = new express.Router()
 const utilities = require("../utilities/")
 const accountController = require("../controllers/accountController")
-const { checkLogin, checkAdmin } = require("../utilities/middleware") // Assuming you have this middleware
+const express = require("express")
+const router = new express.Router()
 
 // Route to build registration view
 router.get("/register", utilities.handleErrors(accountController.buildRegister))
@@ -29,33 +28,32 @@ router.post(
 // Account management route - requires login to access
 router.get(
   "/",
-  checkLogin,
+  regValidate.checkLoginData,
   utilities.handleErrors(accountController.accountManagement)
-)
-
-// Route to account update view
-router.get(
-  "/update/:account_id",
-  checkLogin,
-  utilities.handleErrors(accountController.buildAccountUpdate)
-)
-
-// Process account information update
-router.post(
-  "/update",
-  checkLogin,
-  regValidate.accountUpdateRules(), // Validation for account update
-  regValidate.checkAccountData,    // Check for validation errors
-  utilities.handleErrors(accountController.updateAccount)
 )
 
 // Process password update
 router.post(
   "/update-password",
-  checkLogin,
-  regValidate.passwordRules(),      // Validation for password update
+  regValidate.checkLoginData,
   regValidate.checkPasswordData,   // Check for validation errors
   utilities.handleErrors(accountController.updatePassword)
+)
+
+// Process account information update
+router.post(
+  "/update",
+  regValidate.checkLoginData,
+  regValidate.accountUpdateRules(), // Validation for account update
+  regValidate.checkAccountData,    // Check for validation errors
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+// Route to account update view
+router.get(
+  "/update/:account_id",
+  regValidate.checkLoginData,
+  utilities.handleErrors(accountController.buildAccountUpdate)
 )
 
 // Process logout

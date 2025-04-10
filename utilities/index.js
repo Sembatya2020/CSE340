@@ -155,4 +155,91 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+/* ****************************************
+ *  Check user authorization, block unauthorized users
+ * ************************************ */
+Util.checkAuthorization = async (req, res, next) => {
+  // auth : 0
+  let auth = 0
+  // logged in ? next : 0
+  if (res.locals.loggedin) {
+    const account = res.locals.accountData
+    // admin ? 1 : 0
+    account.account_type == "Admin" 
+      || account.account_type == "Employee" ? auth = 1 : auth = 0 
+  }
+  // !auth ? 404 : next()
+  if (!auth) {
+    req.flash("notice", "Please log in")
+    res.redirect("/account/login")
+    return
+  } else {
+    next()
+  }
+}
+
+/* ************************
+ * Constructs unarchived messages on account_id
+ ************************** */
+Util.getAccountMessages = async function (account_id) {
+  let data = await messageModel.getMessagesByAccountId(account_id)
+  let dataTable
+  if (data.rowCount === 0) {
+    dataTable = '<h3>No new messages</h3>'
+  } else {
+    dataTable = '<table id="inboxMessagesDisplay"><thead>'; 
+    dataTable += '<tr><th>Read</th><th>Recieved</th><th>Subject</th><th>From</th></tr>'; 
+    dataTable += '</thead>'; 
+    // Set up the table body 
+    dataTable += '<tbody>'; 
+    // Iterate over all messages in the array and put each in a row 
+    data.rows.forEach((row => { 
+      dataTable += `<tr><td><div class="bubble` 
+        if (row.message_read) {
+          dataTable += ` true"`
+        } else {
+          dataTable += ` false"`
+        }
+      dataTable += `></div></td>`; 
+      dataTable += `<td>${row.message_created.toLocaleString('en-US', 'narrow')}</td>`; 
+      dataTable += `<td><a href='/inbox/view/${row.message_id}' title='Click to view message'>${row.message_subject}</a></td>`;
+      dataTable += `<td>${row.account_firstname} ${row.account_lastname}</td></tr>`;
+    })) 
+    dataTable += '</tbody></table>'; 
+  }
+  return dataTable
+}
+
+/* ************************
+ * Constructs archived messages on account_id
+ ************************** */
+Util.getArchivedMessages = async function (account_id) {
+  let data = await messageModel.getArchivedMessagesByAccountId(account_id)
+  let dataTable
+  if (data.rowCount === 0) {
+    dataTable = '<h3>No archived messages</h3>'
+  } else {
+    dataTable = '<table id="inboxMessagesDisplay"><thead>'; 
+    dataTable += '<tr><th>Read</th><th>Recieved</th><th>Subject</th><th>From</th></tr>'; 
+    dataTable += '</thead>'; 
+    // Set up the table body 
+    dataTable += '<tbody>'; 
+    // Iterate over all messages in the array and put each in a row 
+    data.rows.forEach((row => {
+      dataTable += `<tr><td><div class="bubble` 
+        if (row.message_read) {
+          dataTable += ` true"`
+        } else {
+          dataTable += ` false"`
+        }
+      dataTable += `></div></td>`; 
+      dataTable += `<td>${row.message_created.toLocaleString('en-US', 'narrow')}</td>`;
+      dataTable += `<td><a href='/inbox/view/${row.message_id}' title='Click to view message'>${row.message_subject}</a></td>`;
+      dataTable += `<td>${row.account_firstname} ${row.account_lastname}</td></tr>`;
+    })) 
+    dataTable += '</tbody></table>'; 
+  }
+  return dataTable
+}
+
 module.exports = Util
