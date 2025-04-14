@@ -27,9 +27,6 @@ app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
 
-// Review routes
-app.use("/reviews", reviewRoute);
-
 /* ***********************
  * Middleware
  * ************************/
@@ -74,6 +71,8 @@ app.use("/error", errorRoute);
 
 // Account routes
 app.use("/account", accountRoute);
+// Review routes
+app.use("/reviews", reviewRoute);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
