@@ -242,4 +242,47 @@ Util.getArchivedMessages = async function (account_id) {
   return dataTable
 }
 
+/* ****************************************
+* Build the star rating HTML
+* *************************************** */
+Util.buildStarRating = function (rating) {
+  rating = parseFloat(rating) || 0
+  const fullStars = Math.floor(rating)
+  const halfStar = (rating - fullStars) >= 0.5
+  const emptyStars = 5 - fullStars - (halfStar ? 1 : 0)
+  
+  let starsHtml = ''
+  
+  // Add full stars
+  for (let i = 0; i < fullStars; i++) {
+    starsHtml += '<span class="star full-star">★</span>'
+  }
+  
+  // Add half star if needed
+  if (halfStar) {
+    starsHtml += '<span class="star half-star">★</span>'
+  }
+  
+  // Add empty stars
+  for (let i = 0; i < emptyStars; i++) {
+    starsHtml += '<span class="star empty-star">☆</span>'
+  }
+  
+  return starsHtml
+}
+
+/* ****************************************
+* Format date to readable string
+* *************************************** */
+Util.formatDate = function (dateString) {
+  const options = { 
+    year: 'numeric', 
+    month: 'short', 
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }
+  return new Date(dateString).toLocaleDateString('en-US', options)
+}
+
 module.exports = Util

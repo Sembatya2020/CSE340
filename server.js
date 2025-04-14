@@ -19,13 +19,16 @@ const pool = require("./database/");
 const accountRoute = require("./routes/accountRoute");
 const errorRoute = require("./routes/errorRoute");
 const bodyParser = require("body-parser");
-
+const reviewRoute = require("./routes/reviewRoutes");
 /* ***********************
  * View Engine and Templates
  *************************/
 app.set("view engine", "ejs");
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout"); // not at views root
+
+// Review routes
+app.use("/reviews", reviewRoute);
 
 /* ***********************
  * Middleware

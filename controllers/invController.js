@@ -33,6 +33,7 @@ invCont.buildByInventoryId = async function (req, res, next) {
     title: VehicleYear + " " + VehicleMake + " " + VehicleModel,
     nav: nav,
     vehicle: vehicle,
+    inv_id: inv_id,
   });
 };
 
