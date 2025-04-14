@@ -178,6 +178,21 @@ Util.checkAuthorization = async (req, res, next) => {
   }
 }
 
+Util.checkAuthorization = (req, res, next) => {
+  if (!res.locals.accountData) {
+    req.flash("notice", "You are not logged in.")
+    return res.redirect("/account/login")
+  }
+  if (res.locals.accountData.account_type == "Employee" ||
+    res.locals.accountData.account_type == "Admin"
+  ) {
+    next()
+  } else {
+    req.flash("notice", "You are not authorized to view this page.")
+    return res.redirect("/account/login")
+  }
+}
+
 /* ************************
  * Constructs unarchived messages on account_id
  ************************** */
