@@ -1,5 +1,5 @@
 const e = require("express")
-const pool = require("../database/")
+const pool = require("../database")
 
 /* ***************************
  *  Get all classification data

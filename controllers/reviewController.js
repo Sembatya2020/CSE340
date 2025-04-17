@@ -1,6 +1,6 @@
-const reviewModel = require("../models/review-model")
-const invModel = require("../models/inventory-model")
-const utilities = require("../utilities/")
+const reviewModel = require("../models/reviewModel")
+const invModel = require("../models/invModel")
+const utilities = require("../utilities")
 const { validationResult } = require("express-validator")
 const reviewValidate = require("../utilities/review-validation")
 
@@ -33,7 +33,7 @@ reviewCont.displayReviews = async function (req, res, next) {
     }
   }
   
-  res.render("reviews/vehicle-reviews", {
+  res.render("views/review/vehicle-reviews", {
     title: `Reviews for ${vehicleName}`,
     nav,
     vehicle,

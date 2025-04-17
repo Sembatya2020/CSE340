@@ -1,7 +1,7 @@
 // Needed Resources
 const express = require("express")
 const router = new express.Router()
-const reviewController = require("../controllers/review-controller")
+const reviewController = require("../controllers/reviewController")
 const reviewValidate = require("../utilities/review-validation")
 const utilities = require("../utilities")
 
@@ -34,6 +34,11 @@ router.post(
 router.get("/delete/:reviewId", utilities.checkLogin, utilities.handleErrors(reviewController.deleteReview))
 
 // Route to display user's reviews in account section
-router.get("/user", utilities.checkLogin, utilities.handleErrors(reviewController.displayUserReviews))
+router.get("/user", utilities.checkLogin, utilities.handleErrors(reviewController.displayReviews))
+
+// Add this test route to reviewRoutes.js
+router.get("/test", (req, res) => {
+  res.send("Review system is working");
+});
 
 module.exports = router

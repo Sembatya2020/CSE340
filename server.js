@@ -19,7 +19,7 @@ const pool = require("./database/");
 const accountRoute = require("./routes/accountRoute");
 const errorRoute = require("./routes/errorRoute");
 const bodyParser = require("body-parser");
-const reviewRoute = require("./routes/reviewRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -72,7 +72,7 @@ app.use("/error", errorRoute);
 // Account routes
 app.use("/account", accountRoute);
 // Review routes
-app.use("/reviews", reviewRoute);
+app.use("/reviews", reviewRoutes);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

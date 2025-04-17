@@ -1,7 +1,7 @@
 const utilities = require("../utilities/")
 const jwt = require("jsonwebtoken")
 require("dotenv").config()
-const invModel = require("../models/inventory-model")
+const invModel = require("../models/invModel")
 const Util = {};
 
 /* ************************
