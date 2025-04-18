@@ -354,7 +354,7 @@ CREATE TABLE IF NOT EXISTS public.reviews (
         ON DELETE CASCADE
 );
 
--- Add index to improve query performance
+-- Added index to improve query performance
 CREATE INDEX idx_reviews_inv_id ON public.reviews(inv_id);
 CREATE INDEX idx_reviews_account_id ON public.reviews(account_id);
 

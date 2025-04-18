@@ -33,7 +33,7 @@ reviewCont.displayReviews = async function (req, res, next) {
     }
   }
   
-  res.render("views/review/vehicle-reviews", {
+  res.render("../vehicle-reviews", {
     title: `Reviews for ${vehicleName}`,
     nav,
     vehicle,
@@ -67,7 +67,7 @@ reviewCont.displayAddReviewForm = async function (req, res, next) {
   const existingReviewId = await reviewModel.checkExistingReview(inv_id, res.locals.accountData.account_id)
   if (existingReviewId) {
     req.flash("notice", "You have already reviewed this vehicle. You can edit your review instead.")
-    return res.redirect(`/reviews/vehicle/${inv_id}`)
+    return res.redirect(`../vehicle-reviews/${inv_id}`)
   }
   
   const nav = await utilities.getNav()
@@ -114,7 +114,7 @@ reviewCont.addReview = async function (req, res) {
   
   if (result) {
     req.flash("notice", "Your review has been added.")
-    res.redirect(`/reviews/vehicle/${inv_id}`)
+    res.redirect(`../vehicle-reviews/${inv_id}`)
   } else {
     req.flash("notice", "Sorry, there was an error adding your review.")
     res.redirect(`/reviews/add/${inv_id}`)
@@ -136,7 +136,7 @@ reviewCont.displayEditReviewForm = async function (req, res, next) {
   // Check if user is logged in and owns the review
   if (!res.locals.accountData || res.locals.accountData.account_id !== review.account_id) {
     req.flash("notice", "You don't have permission to edit this review.")
-    return res.redirect(`/reviews/vehicle/${review.inv_id}`)
+    return res.redirect(`../vehicle/${review.inv_id}`)
   }
   
   const nav = await utilities.getNav()
@@ -160,7 +160,7 @@ reviewCont.updateReview = async function (req, res) {
   // Check if user owns the review
   if (!res.locals.accountData || res.locals.accountData.account_id !== review.account_id) {
     req.flash("notice", "You don't have permission to edit this review.")
-    return res.redirect(`/reviews/vehicle/${review.inv_id}`)
+    return res.redirect(`../vehicle/${review.inv_id}`)
   }
   
   // Process validation results
@@ -186,7 +186,7 @@ reviewCont.updateReview = async function (req, res) {
   
   if (result) {
     req.flash("notice", "Your review has been updated.")
-    res.redirect(`/reviews/vehicle/${review.inv_id}`)
+    res.redirect(`../views/reviews/vehicle/${review.inv_id}`)
   } else {
     req.flash("notice", "Sorry, there was an error updating your review.")
     res.redirect(`/reviews/edit/${review_id}`)
@@ -211,7 +211,7 @@ reviewCont.deleteReview = async function (req, res) {
   
   if (!isOwner && !isAdmin) {
     req.flash("notice", "You don't have permission to delete this review.")
-    return res.redirect(`/reviews/vehicle/${review.inv_id}`)
+    return res.redirect(`../vehicle/${review.inv_id}`)
   }
   
   // Delete the review
@@ -222,13 +222,13 @@ reviewCont.deleteReview = async function (req, res) {
     
     // Redirect to different places based on who deleted it
     if (isAdmin && !isOwner) {
-      res.redirect(`/reviews/vehicle/${review.inv_id}`)
+      res.redirect(`../vehicle/${review.inv_id}`)
     } else {
       res.redirect("/account/reviews")
     }
   } else {
     req.flash("notice", "Sorry, there was an error deleting the review.")
-    res.redirect(`/reviews/vehicle/${review.inv_id}`)
+    res.redirect(`../vehicle/${review.inv_id}`)
   }
 }
 
