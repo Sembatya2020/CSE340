@@ -20,6 +20,7 @@ const accountRoute = require("./routes/accountRoute");
 const errorRoute = require("./routes/errorRoute");
 const bodyParser = require("body-parser");
 const reviewRoutes = require("./routes/reviewRoutes");
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -108,6 +109,6 @@ const host = process.env.HOST;
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-app.listen(port, () => {
+app.listen(port, host,() => {
   console.log(`app listening on ${host}:${port}`);
 });
