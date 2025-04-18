@@ -12,7 +12,7 @@ validate.classificationRules = () => {
     body("classification_name")
       .trim()
       .isAlphanumeric()
-      .withMessage("Classification name cannot contain spaces or special characters.")
+      .withMessage("Classification name cannot contain spaces or special character.")
       .isLength({ min: 3 })
       .withMessage("Classification name must be at least 3 characters long.")
       .custom(async (classification_name) => {
